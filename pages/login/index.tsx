@@ -3,29 +3,28 @@ import { AuthPage } from "@refinedev/core";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
+
 import { authProvider } from "src/authProvider";
 
 export default function Login() {
   return (
     <AuthPage
       type="login"
-      renderContent={(content) => (
-        <div>
-          <p
-            style={{
-              padding: 10,
-              color: "#004085",
-              backgroundColor: "#cce5ff",
-              borderColor: "#b8daff",
-              textAlign: "center",
-            }}
-          >
-            email: info@refine.dev
-            <br /> password: refine-supabase
-          </p>
-          {content}
-        </div>
-      )}
+      renderContent={(content: React.ReactNode , title:React.ReactNode) => {
+        return (
+            <div
+                className=""
+            >
+         
+                {content}
+       
+          <p>
+            {title}
+            </p>      
+            </div>
+        );
+    }}
+    
     />
   );
 }

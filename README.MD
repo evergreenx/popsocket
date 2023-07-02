@@ -1,48 +1,44 @@
-# popsocket
+# PopSocket - Musician Booking App
 
-<div align="center" style="margin: 30px;">
-    <a href="https://refine.dev">
-    <img src="https://refine.ams3.cdn.digitaloceanspaces.com/refine_logo.png"  align="center" />
-    </a>
-</div>
-<br/>
+This README.md document provides an overview of the RhythmReels app, a musician booking platform.
+## Introduction
 
-This [refine](https://github.com/pankod/refine) project was generated with [superplate](https://github.com/pankod/refine).
+PopSocket is a musician booking app that allows event organizers to find and book musicians for their events. The app provides a range of features, including musician profiles with sample music, a booking and payment system, and a review and rating system.
 
-## Getting Started
+## App Details
 
-**refine** is a React-based framework for building data-intensive applications in no time ✨
+- Technologies:
+  - Frontend: [Refine](https://refine.dev/)
+  - Backend: [Supabase](https://supabase.com/)
+  - Database: [Supabase](https://supabase.com/)
+  - Authentication: [Supabase](https://supabase.com/) (Email , Google Auth)
+  - Storage: [Supabase](https://supabase.com/)
+  - Hosting: [Vercel](https://vercel.com/)
 
-Refine offers lots of out-of-the box functionality for rapid development, without compromising extreme customizability. Use-cases include, but are not limited to admin panels, B2B applications and dashboards.
+## Features
 
-## Available Scripts
+### User Registration and Profiles
 
-### Running the development server.
+- Musicians and event organizers can create user accounts with detailed profiles.
+- Profiles include information about skills, experience, genres, and portfolio.
+- Users can easily manage and update their profiles.
 
-```bash
-    npm run dev
-```
+### Search and Discovery
 
-### Building for production.
+- Event organizers can search for musicians based on criteria like genre, location, availability, and budget.
+- Musicians can explore and apply for available gigs or events that match their preferences.
 
-```bash
-    npm run build
-```
+### Booking and Scheduling
 
-### Running the production server.
+- Event organizers can send booking requests to musicians, who can review the details and accept or decline the offers.
+- The app incorporates a calendar or scheduling system to manage event dates, times, and availability.
 
-```bash
-    npm run start
-```
+### Reviews and Ratings
 
-## Learn More
+- Event organizers can leave reviews and ratings for musicians they have worked with.
+- The feedback system helps build trust and credibility within the platform and assists future organizers in making informed decisions.
 
-To learn more about **refine**, please check out the [Documentation](https://refine.dev/docs)
 
-- **Supabase Data Provider** [Docs](https://refine.dev/docs/core/providers/data-provider/#overview)
-- **Inferencer** [Docs](https://refine.dev/docs/packages/documentation/inferencer)
-- **i18n** [Docs](https://refine.dev/docs/core/providers/i18n-provider/)
+## Conclusion
 
-## License
-
-MIT
+PopSocket is an innovative musician booking app that simplifies the process of finding and booking musicians for events. With its comprehensive features and user-friendly interface, the app aims to connect event organizers with talented musicians, fostering a vibrant live music culture.
