@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
 
   return (
     <>
-      <GitHubBanner />
+
       <RefineKbarProvider>
         <Refine
           routerProvider={routerProvider}
@@ -55,7 +55,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
           resources={[
             {
               name: "blog_posts",
-              list: "/blog-posts",
+              list: "/",
               create: "/blog-posts/create",
               edit: "/blog-posts/edit/:id",
               show: "/blog-posts/show/:id",

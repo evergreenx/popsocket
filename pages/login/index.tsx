@@ -3,28 +3,21 @@ import { AuthPage } from "@refinedev/core";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-
 import { authProvider } from "src/authProvider";
 
 export default function Login() {
   return (
     <AuthPage
       type="login"
-      renderContent={(content: React.ReactNode , title:React.ReactNode) => {
+      renderContent={(content: React.ReactNode, title: React.ReactNode) => {
         return (
-            <div
-                className=""
-            >
-         
-                {content}
-       
-          <p>
-            {title}
-            </p>      
-            </div>
+          <div className="">
+            {content}
+
+            <p>{title}</p>
+          </div>
         );
-    }}
-    
+      }}
     />
   );
 }
