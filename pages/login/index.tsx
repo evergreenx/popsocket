@@ -6,7 +6,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { authProvider } from "src/authProvider";
 
 export default function Login() {
-  
   return (
     <AuthPage
       type="login"
@@ -16,15 +15,6 @@ export default function Login() {
           label: "Sign in with x Google",
         },
       ]}
-      renderContent={(content: React.ReactNode, title: React.ReactNode) => {
-        return (
-          <div className="">
-            {content}
-
-            <p>{title}</p>
-          </div>
-        );
-      }}
     />
   );
 }
