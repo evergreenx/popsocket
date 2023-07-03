@@ -4,57 +4,59 @@ import nookies from "nookies";
 import { supabaseClient } from "./utility";
 
 export const authProvider: AuthBindings = {
-  login: async ({ email, password ,providerName  }) => {
+  login: async ({ email, password, providerName }) => {
+    // sign in with oauth
+    try {
+      if (providerName) {
+        const { data, error } = await supabaseClient.auth.signInWithOAuth({
+          provider: providerName,
+        });
 
-    if (providerName) {
-      const { data, error } =
-          await supabaseClient.auth.signInWithOAuth({
-              provider: providerName,
-          });
+        if (error) {
+          return {
+            success: false,
+            error,
+          };
+        }
+
+        if (data?.url) {
+          return {
+            success: true,
+          };
+        }
+      }
+
+      // sign in with email and password
+      const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email,
+        password,
+      });
 
       if (error) {
-          return {
-              success: false,
-              error,
-          };
+        return {
+          success: false,
+          error,
+        };
       }
 
-      if (data?.url) {
-          return {
-              success: true,
-          };
+      if (data?.user) {
+        return {
+          success: true,
+          redirectTo: "/",
+        };
       }
-  }
-    const { data, error } = await supabaseClient.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (error) {
+    } catch (error: any) {
       return {
         success: false,
         error,
       };
     }
 
-    if (data?.session) {
-      nookies.set(null, "token", data.session.access_token, {
-        maxAge: 30 * 24 * 60 * 60,
-        path: "/",
-      });
-
-      return {
-        success: true,
-        redirectTo: "/",
-      };
-    }
-
-    // for third-party login
     return {
       success: false,
       error: {
-        name: "LoginError",
-        message: "Invalid username or password",
+        message: "Login failed",
+        name: "Invalid email or password",
       },
     };
   },
@@ -109,20 +111,36 @@ export const authProvider: AuthBindings = {
       },
     };
   },
-  check: async (ctx) => {
-    const { token } = nookies.get(ctx);
-    const { data } = await supabaseClient.auth.getUser(token);
-    const { user } = data;
+  check: async () => {
+    try {
+      const { data } = await supabaseClient.auth.getSession();
+      const { session } = data;
 
-    if (user) {
+      if (!session) {
+        return {
+          authenticated: false,
+          error: {
+            message: "Check failed",
+            name: "Session not found",
+          },
+          logout: true,
+          redirectTo: "/login",
+        };
+      }
+    } catch (error: any) {
       return {
-        authenticated: true,
+        authenticated: false,
+        error: error || {
+          message: "Check failed",
+          name: "Session not found",
+        },
+        logout: true,
+        redirectTo: "/login",
       };
     }
 
     return {
-      authenticated: false,
-      redirectTo: "/login",
+      authenticated: true,
     };
   },
   getPermissions: async () => {
